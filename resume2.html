@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mapping Portfolio</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            overflow: hidden;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .project {
+            height: 100vh;
+            display: flex;
+            align-items: left;
+            justify-content: left;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 50%);
+            grid-auto-rows: minmax(100px, auto);
+            max-width: 50%;
+            gap: 10px;
+        }
+       .grid-img {
+	        max-width: 100%;
+            margin-right: 5px;
+        }
+        .project-img {
+            flex: 1;
+            max-width: 50%;
+            margin-right: 20px;
+        }
+
+        .project-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-title {
+            font-weight: bold;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .project-body {
+            margin-bottom: 10px;
+        }
+
+        .project-citation {
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="'project">
+        <h1>Mapping Portfolio</h1> 
+    </div>
+    <div class="project">
+        <div class="project-grid">
+            <figure>
+                <img class="grid-img" src="agts.png" alt="Project 1 Image 1">
+            </figure>
+            <figure>
+                <img class="grid-img" src="undts.png" alt="Project 1 Image 2">
+            </figure>
+            <figure>
+                <img class="grid-img" src="swiddents.png" alt="Project 1 Image 3">
+            </figure>
+            <figure>
+                <img class="grid-img" src="roadv2.png" alt="Project 1 Image 4">
+            </figure>
+        </div>
+        <div class="project-text">
+            <h2 class="project-title">Project 1 Title</h2>
+            <p class="project-body">Project 1 Description</p>
+            <p class="project-citation">Data citation: [Data Source]</p>
+        </div>
+    </div>
+
+    <div class="project">
+        <img class="project-img" src="project2.png" alt="Project 2">
+        <div class="project-text">
+            <h2 class="project-title">Project 2 Title</h2>
+            <p class="project-body">Project 2 Description</p>
+            <p class="project-citation">Data citation: [Data Source]</p>
+        </div>
+    </div>
+
+    <div class="project">
+        <img class="project-img" src="project3.png" alt="Project 3">
+        <div class="project-text">
+            <h2 class="project-title">Project 3 Title</h2>
+            <p class="project-body">Project 3 Description</p>
+            <p class="project-citation">Data citation: [Data Source]</p>
+        </div>
+    </div>
+
+    <script>
+        const projects = document.querySelectorAll('.project');
+        let currentProjectIndex = 0;
+
+        function scrollToProject(index) {
+            projects[index].scrollIntoView({ behavior: 'smooth' });
+        }
+
+         function handleScroll(event) {
+            const delta = Math.sign(event.deltaY);
+            if (delta > 0 && currentProjectIndex < projects.length - 1) {
+                currentProjectIndex++;
+            } else if (delta < 0 && currentProjectIndex > 0) {
+                currentProjectIndex--;
+            }
+            scrollToProject(currentProjectIndex);
+        }
+
+        window.addEventListener('wheel', handleScroll);
+    </script>
+</body>
+</html>
